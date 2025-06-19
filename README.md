@@ -27,7 +27,7 @@ Este é um projeto de uma calculadora que resolve expressões na notação polon
     ```bash
     ./calculadora
     ```
-3.  Siga as instruções para inserir a expressão RPN.
+3.  Siga as instruções para inserir a expressão RNP.
 
 ### Exemplo de uso
 Expressão Inserida: `5 3 + 2 *`
@@ -47,7 +47,7 @@ Resultado: `16`
 
 ## Implementação do algoritmo
 
-O algoritmo da calculadora RPN foi implementado utilizando uma pilha para armazenar os operandos. A entrada é lida e separada em tokens. Se o token for um número, ele é convertido para inteiro e empilhado na pilha. Se o token for um operador (+, -, *, /), os dois operandos do topo da pilha são desempilhados, a operação é realizada e o resultado é empilhado de volta na pilha.
+O algoritmo da calculadora RNP foi implementado utilizando uma pilha para armazenar os operandos. A entrada é lida e separada em tokens. Se o token for um número, ele é convertido para inteiro e empilhado na pilha. Se o token for um operador (+, -, *, /), os dois operandos do topo da pilha são desempilhados, a operação é realizada e o resultado é empilhado de volta na pilha.
 
 ### Passos
 
