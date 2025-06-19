@@ -12,7 +12,7 @@ Este é um projeto de uma calculadora que resolve expressões na notação polon
     - Multiplicação (*); e
     - Divisão (/).
 - Validação de entrada para garantir que apenas números e operadores válidos sejam processados.
-- Tratamento de erros, como divisão por zero e pilha cheia/vazia.
+- Tratamento de erros.
 - Interface de usuário simples para inserir a expressão RPN.
 
 ## Como utilizar
@@ -49,36 +49,26 @@ Resultado: `16`
 
 O algoritmo da calculadora RPN foi implementado utilizando uma pilha para armazenar os operandos. A entrada é lida e separada em tokens. Se o token for um número, ele é convertido para inteiro e empilhado na pilha. Se o token for um operador (+, -, *, /), os dois operandos do topo da pilha são desempilhados, a operação é realizada e o resultado é empilhado de volta na pilha.
 
-### Passos detalhados:
+### Passos
 
-1.  **Inicialização:**
-    *   Uma pilha é inicializada para armazenar os operandos.
+1.  **Inicialização:** Uma pilha é inicializada para armazenar os operandos.
 
-2.  **Leitura da entrada:**
-    *   A entrada é lida como uma string e dividida em tokens separados por espaços.
+2.  **Leitura da entrada:** A entrada é lida como uma string e dividida em tokens separados por espaços.
 
 3.  **Processamento dos tokens:**
-    *   Para cada token:
-        *   **Se o token for um número:**
-            *   Converte o token para um inteiro.
-            *   Empilha o número na pilha.
-        *   **Se o token for um operador:**
-            *   Desempilha os dois operandos do topo da pilha (o segundo operando é o primeiro a ser desempilhado).
-            *   Realiza a operação especificada pelo operador.
-            *   Empilha o resultado na pilha.
+    *   Se o token for um número: Converte-se o token para um inteiro e o empilha na pilha.
+    *   Se o token for um operador: Desempilha-se os dois operandos do topo da pilha (o segundo operando é o primeiro a ser desempilhado), realiza-se a operação especificada pelo operador e se empilha o resultado na pilha.
 
-4.  **Resultado final:**
-    *   Após processar todos os tokens, o resultado final deve ser o único valor restante na pilha.
-    *   Desempilha o valor do topo da pilha e exibe como resultado.
+4.  **Resultado final:** Após todos os tokens serem processados, o resultado final deve ser o único valor restante na pilha; assim, esse valor é desempilhado e exibido como resultado.
 
 ### Tratamento de erros:
 
 *   **Pilha vazia:** Ocorre quando um operador é encontrado, mas não há operandos suficientes na pilha.
 *   **Pilha cheia:** Ocorre quando a pilha atinge sua capacidade máxima ao tentar empilhar um novo operando.
-*   **Divisão por zero:** Ocorre quando o operador de divisão é encontrado e o segundo operando é zero.
+*   **Divisão por zero:** Ocorre quando o segundo operando é zero.
 *   **Entrada inválida:** Ocorre quando um token não é um número nem um operador válido.
 
-### Exemplo detalhado:
+### Exemplo
 
 Para a expressão `5 3 + 2 *`:
 

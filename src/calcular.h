@@ -10,9 +10,14 @@
 #define calcular_H
 
 void calcular(char *operador, Pilha *pilha){
+    // Desempilha os dois operandos do topo da lista
     int b = pop(pilha);
     int a = pop(pilha);
+
+    // Variável para armazenar o resultado da operação
     int res;
+
+    // Realiza a operação de acordo com o operando
     switch (*operador) {
         case '+':
             res = a + b;
@@ -34,6 +39,8 @@ void calcular(char *operador, Pilha *pilha){
             printf(RED "Operador desconhecido: %s\n" RESET, operador);
             return;
     }
+
+    // Empilha o resultado da operação
     push(pilha, res);
 
 }
@@ -43,6 +50,7 @@ void lerValores(Pilha *pilha){
     int size = 0;
     int ch;
 
+    // Lê a expressão inserida pelo usuário e a armazena em str
     while ((ch = getchar()) != '\n' && ch != EOF) {
         char *temp = realloc(str, size + 1);
         if (temp == NULL) {
@@ -56,19 +64,11 @@ void lerValores(Pilha *pilha){
         size++;
     }
 
-    char *temp = realloc(str, size + 1);
-    if (temp == NULL) {
-        printf(RED "Falha na alocação da memória\n" RESET);
-        free(str);
-        return;
-    }
-    str = temp;
-    str[size] = '\0';
-
+    // "Quebra" a expressão em valores de acordo com os espaços 
     const char delimitador[] = " ";
-
     char *token = strtok(str, delimitador);
 
+    // Para cada um dos valores, verifica se é operando, número ou inválido
     while (token != NULL) {
         if (strcmp(token, "+") == 0 || strcmp(token, "-") == 0 ||
             strcmp(token, "*") == 0 || strcmp(token, "/") == 0) {
