@@ -3,8 +3,11 @@
 #include <string.h>
 #include "pilha.h"
 
-#ifndef functions_h
-#define functions_h
+#define RED "\x1b[31m"
+#define RESET "\x1b[0m"
+
+#ifndef calcular_H
+#define calcular_H
 
 void calcular(char *operador, Pilha *pilha){
     int b = pop(pilha);
@@ -22,13 +25,13 @@ void calcular(char *operador, Pilha *pilha){
             break;
         case '/':
             if (b == 0) {
-                printf("Error: Division by zero\n");
+                printf(RED "Erro: Divisão por zero\n" RESET);
                 return;
             }
             res = a / b;
             break;
         default:
-            printf("Operador desconhecido: %s\n", operador);
+            printf(RED "Operador desconhecido: %s\n" RESET, operador);
             return;
     }
     push(pilha, res);
@@ -40,12 +43,10 @@ void lerValores(Pilha *pilha){
     int size = 0;
     int ch;
 
-    printf("Insira sua expressão em RPN:\n");
-
     while ((ch = getchar()) != '\n' && ch != EOF) {
         char *temp = realloc(str, size + 1);
         if (temp == NULL) {
-            printf("Memory allocation failed\n");
+            printf(RED "Falha na alocação da memória\n" RESET);
             free(str);
             return;
         }
@@ -57,7 +58,7 @@ void lerValores(Pilha *pilha){
 
     char *temp = realloc(str, size + 1);
     if (temp == NULL) {
-        printf("Memory allocation failed\n");
+        printf(RED "Falha na alocação da memória\n" RESET);
         free(str);
         return;
     }
@@ -79,7 +80,7 @@ void lerValores(Pilha *pilha){
             if (*endptr == '\0') {
                 push(pilha, number);
             } else {
-                printf("Invalid token: %s\n", token);
+                printf(RED "Entrada inválida: %s\n" RESET, token);
             }
         }
 
@@ -87,14 +88,6 @@ void lerValores(Pilha *pilha){
     }
 
     free(str);
-}
-
-void mostrarResultadoFinal(Pilha *pilha){
-    if (!estaVazia(pilha)) {
-        printf("Resultado final: %d\n", pilha->elementos[pilha->topo]);
-    } else {
-        printf("A pilha está vazia. Nenhum resultado para mostrar.\n");
-    }
 }
 
 #endif

@@ -1,7 +1,10 @@
 #include <stdio.h>
 
-#ifndef pilha_h
-#define pilha_h
+#define RED "\x1b[31m"
+#define RESET "\x1b[0m"
+
+#ifndef pilha_H
+#define pilha_H
 
 #define MAX 100
 
@@ -22,7 +25,7 @@ int estaVazia(Pilha *pilha){
 
 void push(Pilha *pilha, int valor){
     if (pilha->topo >= MAX - 1){
-        printf("Erro: Pilha cheia\n");
+        printf(RED "Erro: Pilha cheia\n" RESET);
         return;
     }
 
@@ -31,7 +34,7 @@ void push(Pilha *pilha, int valor){
 
 int pop(Pilha *pilha){
     if (estaVazia(pilha)) {
-        printf("Erro: Pilha vazia\n");
+        printf(RED "Erro: Pilha vazia\n" RESET);
         return 0;
     }
 
